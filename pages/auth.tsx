@@ -32,7 +32,7 @@ const Auth = () => {
             bg-black
             w-full 
             h-full
-            lg:bg-opacity-70"
+            lg:bg-black/70"
       >
         <nav className="px-12 h-24 relative">
           <Image
