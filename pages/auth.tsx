@@ -6,6 +6,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 
 import Input from "@/components/Input";
+import NextImage from "@/components/NextImage";
 
 const Auth = () => {
   const [email, setEmail] = useState("");
@@ -65,11 +66,11 @@ const Auth = () => {
             lg:bg-black/70"
       >
         <nav className="px-12 h-24 relative">
-          <Image
-            src="/images/logo.png"
+          <NextImage
             alt="logo"
-            fill
-            className="object-left object-contain px-12 py-5"
+            src="/images/logo.png"
+            height={50}
+            className="my-2"
           />
         </nav>
         <div className="flex justify-center">

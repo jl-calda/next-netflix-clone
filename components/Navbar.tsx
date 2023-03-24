@@ -1,3 +1,6 @@
+import Image from "next/image";
+import NextImage from "./NextImage";
+
 const Navbar = () => {
   return (
     <nav className="w-full fixed z-40">
@@ -14,7 +17,12 @@ const Navbar = () => {
             bg-zinc-900
             bg-opacity-90"
       >
-        <img className="h-4 lg:h-7" src="/images/logo.png" alt="logo" />
+        <NextImage
+          alt="logo"
+          src="/images/logo.png"
+          height={50}
+          className="my-2"
+        />
       </div>
       Navbar
     </nav>
