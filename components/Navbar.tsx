@@ -48,8 +48,8 @@ const Navbar = () => {
             flex-row
             items-center
             transition
-            duration-500
-           ${showBackground ? "bg-zinc-900" : ""}}`}
+            duration-500 
+           ${showBackground ? "bg-zinc-900 bg-opacity-90" : ""}}`}
       >
         <div className="h-10 w-36 relative">
           <Image
@@ -113,7 +113,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      Navbar
     </nav>
   );
 };
