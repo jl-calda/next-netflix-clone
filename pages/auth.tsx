@@ -43,7 +43,7 @@ const Auth = () => {
       console.log(error);
     }
     login();
-  }, [email, name, password]);
+  }, [login, email, name, password]);
 
   return (
     <div
