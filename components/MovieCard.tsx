@@ -1,14 +1,36 @@
+import useInfoModal from "@/hooks/useInfoModal";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { BsFillPlayFill } from "react-icons/bs";
+import { BiChevronDown } from "react-icons/bi";
+
 import FavoriteButton from "./FavoriteButton";
+import { useCallback } from "react";
+
+interface MovieInterface {
+  id: string;
+  title: string;
+  description: string;
+  thumbnailUrl: string;
+  videoUrl: string;
+  duration: string;
+  genre: string;
+}
 
 interface MovieCardProps {
-  data: Record<string, any>;
+  data: MovieInterface;
 }
 const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
+  const router = useRouter();
+  const { openModal } = useInfoModal();
+
+  const redirectToWatch = useCallback(() => {
+    router.push(`/watch/${data.id}`);
+  }, [router, data.id]);
   return (
     <div className="group bg-zinc-900 col-span relative h-[12vw]">
       <img
+        onClick={redirectToWatch}
         className="cursor-pointer object-cover transition duration shadow-xl rounded-md group-hover:opacity-90 sm:group-hover:opacity-0 delay-300 w-full h-[12vw]"
         src={data.thumbnailUrl}
         alt={data.title}
@@ -32,6 +54,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
             group-hover:opacity-100"
       >
         <img
+          onClick={redirectToWatch}
           className="cursor-pointer
             object-cover
             transition
@@ -47,11 +70,20 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
           <div className="flex flex-row items-center gap-3">
             <div
               className="cursor-pointer w-6 h-6 lg:w-10 lg:h-10 bg-white rounded-full flex justify-center items-center transition hover:bg-neutral-300"
-              onClick={() => {}}
+              onClick={redirectToWatch}
             >
               <BsFillPlayFill size={30} />
             </div>
-            <FavoriteButton movieId={data?.id} />
+            <FavoriteButton movieId={data.id} />
+            <div
+              onClick={() => openModal(data?.id)}
+              className="cursor-pointer ml-auto group/item w-6 h-6 lg:w-10 lg:h-10 border-white border-2 rounded-full flex items-center justify-center transition hover:border-neutral-300"
+            >
+              <BiChevronDown
+                className="text-white group-hover/item:text-neutral-300"
+                size={30}
+              />
+            </div>
           </div>
           <p className="text-green-400 font-semibold mt-4">
             New <span className="text-white">2023</span>
