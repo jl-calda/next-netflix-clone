@@ -7,18 +7,8 @@ import { BiChevronDown } from "react-icons/bi";
 import FavoriteButton from "./FavoriteButton";
 import { useCallback } from "react";
 
-interface MovieInterface {
-  id: string;
-  title: string;
-  description: string;
-  thumbnailUrl: string;
-  videoUrl: string;
-  duration: string;
-  genre: string;
-}
-
 interface MovieCardProps {
-  data: MovieInterface;
+  data: Record<string, any>;
 }
 const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
   const router = useRouter();
